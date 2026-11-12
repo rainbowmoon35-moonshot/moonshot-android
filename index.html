@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moonshot 주식 앱</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f3f5f9;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      max-width: 420px;
+      margin: auto;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    button {
+      background: #1769e0;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+    }
+    #result { line-height: 1.8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>📈 Moonshot 주식 앱</h2>
+    <p>내 주식 수익률 계산기</p>
+    <input id="stock" placeholder="종목명 (예: 삼성전자)">
+    <input id="buy" type="number" placeholder="매수가">
+    <input id="current" type="number" placeholder="현재가">
+    <input id="qty" type="number" placeholder="보유 수량">
+    <button onclick="calculate()">수익률 계산</button>
+    <div id="result"></div>
+  </div>
+  <script>
+    function calculate() {
+      const stock = document.getElementById("stock").value;
+      const buy = Number(document.getElementById("buy").value);
+      const current = Number(document.getElementById("current").value);
+      const qty = Number(document.getElementById("qty").value);
+      const result = document.getElementById("result");
+
+      if (!buy || !current || !qty || buy <= 0 || current <= 0 || qty <= 0) {
+        result.textContent = "올바른 가격과 수량을 입력하세요.";
+        return;
+      }
+
+      const profit = (current - buy) * qty;
+      const rate = ((current - buy) / buy) * 100;
+      result.textContent =
+        `${stock || "주식"} | 수익률: ${rate.toFixed(2)}% | 평가손익: ${profit.toLocaleString()}원`;
+    }
+  </script>
+</body>
+</html>
