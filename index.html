@@ -39,6 +39,15 @@
     <h2>📈 Moonshot 주식 앱</h2>
     <p>내 주식 수익률 계산기</p>
     <input id="stock" placeholder="종목명 (예: 삼성전자)">
+    
+<select onchange="document.getElementById('stock').value=this.value">
+  <option value="">종목 선택</option>
+  <option value="삼성전자">삼성전자</option>
+  <option value="SK하이닉스">SK하이닉스</option>
+  <option value="현대차">현대차</option>
+  <option value="NAVER">NAVER</option>
+</select>
+
     <input id="buy" type="number" placeholder="매수가">
     <input id="current" type="number" placeholder="현재가">
     <input id="qty" type="number" placeholder="보유 수량">
